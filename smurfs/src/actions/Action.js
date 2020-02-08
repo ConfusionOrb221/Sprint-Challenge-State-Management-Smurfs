@@ -22,5 +22,29 @@ export const pushSmurf = (smurf) => dispatch =>{
         name: '',
         height: '',
         age: ''
-    }
+    };
+}
+
+export const editSmurf = (id, smurf) => dispatch =>{
+    axios.put(`http://localhost:3333/smurfs/${id}`, {
+        ...smurf
+    })
+    .then(res => dispatch({type: FETCH_SMURF_SUCCESS, payload: res.data}))
+    .catch(err => dispatch({type: FETCH_SMURF_FAIL, payload: err}));
+    return {
+        name: '',
+        height: '',
+        age: ''
+    };
+}
+
+export const delteSmurf = (id) => dispatch =>{
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+        .then(res => dispatch({type: FETCH_SMURF_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({type: FETCH_SMURF_FAIL, payload: err}));
+    return {
+        name: '',
+        height: '',
+        age: ''
+    };
 }
